@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Affress Studio — Katalog</title>
+<meta name="description" content="Koleksi dress & outfit pilihan. Cek katalog lengkapnya.">
+<style>
+/* ============================================================
+   Affress Studio — katalog lookbook editorial
+   Palet: plum #17131a · krem #f4e9d8 · emas #c9a26b
+   Type: Fraunces (display serif, editorial) + Inter (body)
+   Signature: grid foto "instax" miring yang lurus pas hover,
+   caption ala cetakan foto, chip sosmed SVG.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #17131a;
+  --bg-2: #1f1a24;
+  --ink: #f4e9d8;
+  --ink-dim: #b8ab96;
+  --gold: #c9a26b;
+  --gold-soft: rgba(201, 162, 107, .14);
+  --line: rgba(244, 233, 216, .12);
+  --radius: 18px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(201,162,107,.08), transparent 60%),
+    radial-gradient(700px 400px at -10% 20%, rgba(140,90,140,.10), transparent 55%),
+    var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 640px; margin: 0 auto; padding: 48px 22px 64px; }
+
+/* ---------- Header ---------- */
+.hdr { text-align: center; margin-bottom: 36px; }
+.avatar {
+  width: 84px; height: 84px; border-radius: 50%;
+  margin: 0 auto 14px;
+  background: linear-gradient(135deg, #c9a26b, #8a5a8a);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 30px;
+  color: #17131a;
+  box-shadow: 0 8px 24px rgba(0,0,0,.4), 0 0 0 3px rgba(201,162,107,.25);
+  position: relative;
+}
+.avatar::after {
+  content: ""; position: absolute; inset: -8px;
+  border: 1px dashed rgba(201,162,107,.4); border-radius: 50%;
+  animation: spin 22s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hdr .brand {
+  font-family: 'Fraunces', serif; font-weight: 700;
+  font-size: 30px; letter-spacing: .01em;
+}
+.hdr .brand em { font-style: italic; color: var(--gold); }
+.hdr .tagline {
+  color: var(--ink-dim); font-size: 14px; margin-top: 8px; line-height: 1.6;
+}
+.hdr .rule {
+  width: 56px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 18px auto 0;
+}
+
+/* ---------- Chip sosmed ---------- */
+.socials { display: flex; justify-content: center; gap: 10px; margin: 20px 0 8px; }
+.socials a {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 16px; border-radius: 40px;
+  background: var(--bg-2); border: 1px solid var(--line);
+  font-size: 13px; font-weight: 500; color: var(--ink);
+  transition: border-color .2s, transform .2s, background .2s;
+}
+.socials a:hover { border-color: var(--gold); transform: translateY(-2px); background: var(--gold-soft); }
+.socials svg { width: 15px; height: 15px; fill: var(--gold); }
+
+/* ---------- Section label ---------- */
+.sec-label {
+  display: flex; align-items: center; gap: 12px;
+  margin: 34px 0 16px;
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 15px; color: var(--gold);
+}
+.sec-label::before, .sec-label::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line));
+}
+.sec-label::after { background: linear-gradient(90deg, var(--line), transparent); }
+
+/* ---------- Grid lookbook (signature) ---------- */
+.lookbook {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+@media (max-width: 420px) { .lookbook { grid-template-columns: 1fr; } }
+.look-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform .35s cubic-bezier(.2,.8,.3,1.1), box-shadow .3s, border-color .3s;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+}
+.look-item:nth-child(3n+1) { --tilt: -1.2deg; }
+.look-item:nth-child(3n+2) { --tilt: 1.4deg; }
+.look-item:nth-child(3n)   { --tilt: -.6deg; }
+.look-item:hover {
+  transform: rotate(0deg) translateY(-4px);
+  border-color: rgba(201,162,107,.5);
+  box-shadow: 0 14px 34px rgba(0,0,0,.45), 0 0 0 1px rgba(201,162,107,.2);
+  z-index: 2;
+}
+.look-item .ph {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #221c28;
+}
+.look-item .ph img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+  transition: transform .5s;
+}
+.look-item:hover .ph img { transform: scale(1.04); }
+.look-item .ph .price-tag {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(23,19,26,.85); backdrop-filter: blur(4px);
+  border: 1px solid rgba(201,162,107,.4);
+  color: var(--gold);
+  font-family: 'Fraunces', serif; font-weight: 600; font-size: 13px;
+  padding: 4px 10px; border-radius: 20px;
+  letter-spacing: .02em;
+}
+.look-item .cap {
+  padding: 12px 14px 14px;
+}
+.look-item .cap .name {
+  font-family: 'Fraunces', serif; font-weight: 600;
+  font-size: 15px; line-height: 1.35;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  min-height: 40px;
+}
+.look-item .cap .go {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 10px; font-size: 12px; color: var(--ink-dim);
+}
+.look-item .cap .go .cta {
+  color: var(--gold); font-weight: 600; letter-spacing: .04em;
+  text-transform: uppercase; font-size: 11px;
+  display: inline-flex; align-items: center; gap: 5px;
+  transition: gap .2s;
+}
+.look-item:hover .cap .go .cta { gap: 9px; }
+.look-item .cap .go .cta svg { width: 12px; height: 12px; fill: var(--gold); }
+
+/* ---------- CTA bawah ---------- */
+.foot-cta {
+  text-align: center; margin-top: 40px;
+  padding: 22px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(201,162,107,.08), rgba(140,90,140,.08));
+}
+.foot-cta p { color: var(--ink-dim); font-size: 13.5px; line-height: 1.6; margin-bottom: 14px; }
+.foot-cta .btn {
+  display: inline-block; padding: 12px 28px; border-radius: 40px;
+  background: linear-gradient(135deg, #c9a26b, #b8874f);
+  color: #17131a; font-weight: 600; font-size: 14px;
+  box-shadow: 0 6px 18px rgba(201,162,107,.3);
+  transition: transform .2s, box-shadow .2s;
+}
+.foot-cta .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(201,162,107,.45); }
+
+.foot {
+  text-align: center; color: var(--ink-dim); font-size: 11.5px;
+  margin-top: 34px; letter-spacing: .06em; text-transform: uppercase;
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hdr">
+    <div class="avatar">A</div>
+    <div class="brand">Affress <em>Studio</em></div>
+    <p class="tagline">Koleksi dress &amp; outfit wanita pilihan.<br>Racik gaya harianmu dari sini.</p>
+    <div class="socials">
+      <a href="https://www.instagram.com/affressdigital" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.25.15 4.77 1.7 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.3.06-1.7.07-4.9.07s-3.6-.01-4.9-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.12 15.6 2.1 15.22 2.1 12s.02-3.58.08-4.85C2.33 3.93 3.84 2.38 7.1 2.23 8.4 2.18 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.pinterest.com/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.31-.09-.79-.17-2.01.03-2.87.19-.78 1.2-4.96 1.2-4.96s-.3-.61-.3-1.51c0-1.42.82-2.48 1.84-2.48.87 0 1.29.65 1.29 1.43 0 .87-.56 2.17-.84 3.38-.24 1.01.5 1.83 1.5 1.83 1.79 0 3.17-1.89 3.17-4.62 0-2.42-1.74-4.11-4.22-4.11-2.87 0-4.56 2.16-4.56 4.38 0 .87.33 1.8.75 2.31.08.1.09.19.07.29-.08.32-.25 1.01-.28 1.15-.05.19-.15.23-.35.14-1.32-.61-2.14-2.54-2.14-4.09 0-3.33 2.42-6.39 6.98-6.39 3.66 0 6.51 2.61 6.51 6.1 0 3.64-2.29 6.57-5.48 6.57-1.07 0-2.08-.56-2.42-1.22l-.66 2.51c-.24.92-.88 2.07-1.31 2.77.99.3 2.04.47 3.12.47 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        Pinterest
+      </a>
+    </div>
+    <div class="rule"></div>
+  </header>
+
+  <div class="sec-label">Koleksi pilihan</div>
+  <div class="lookbook">
+    
+    <a class="look-item" href="https://s.shopee.co.id/5VUT3Fudxr" target="_blank" rel="noopener" title="Floral Garden Midi Dress in Off Broken Purple">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/26/pin_urban_street_20260814_104424.png" alt="Floral Garden Midi Dress in Off Broken Purple" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Floral Garden Midi Dress in Off Broken Purple</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/5LB2qwvHIo" target="_blank" rel="noopener" title="Wrap Style Dress with Trumpet Sleeve in 2 Colors Red Merah Black Hitam">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/sg-11134201-22110-5n8iphmy3ljvd8" alt="Wrap Style Dress with Trumpet Sleeve in 2 Colors Red Merah Black Hitam" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Wrap Style Dress with Trumpet Sleeve in 2 Colors Red Merah Black Hitam</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/5q7JRrtNHt" target="_blank" rel="noopener" title="(CUTTING BESAR) Puffy Sleeve Cream Green Cottage Core Midi Dress with Ruched Bodice">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/24/pin_tropical_jungle_20260815_115904.png" alt="(CUTTING BESAR) Puffy Sleeve Cream Green Cottage Core Midi Dress with Ruched Bodice" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">(CUTTING BESAR) Puffy Sleeve Cream Green Cottage Core Midi Dress with Ruched Bodice</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/5fntFYu0cq" target="_blank" rel="noopener" title="[ BARTISTE ] PAMELA SET">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/23/pin_night_market_20260815_174202.png" alt="[ BARTISTE ] PAMELA SET" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">[ BARTISTE ] PAMELA SET</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/7VFXQvn1uB" target="_blank" rel="noopener" title="Frill Floral Midi Dress">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/sg-11134201-7qvfi-lgte61j6u6w405" alt="Frill Floral Midi Dress" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Frill Floral Midi Dress</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/7Kw7EcnfF8" target="_blank" rel="noopener" title="(CUTTING BESAR) Puffy Sleeve Blue Dress Multi Floral Midi Dress with Ruched Bodice">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/sg-11134201-7qvfr-lj7ajqy6048jc8" alt="(CUTTING BESAR) Puffy Sleeve Blue Dress Multi Floral Midi Dress with Ruched Bodice" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">(CUTTING BESAR) Puffy Sleeve Blue Dress Multi Floral Midi Dress with Ruched Bodice</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/7psNpXllED" target="_blank" rel="noopener" title="Polkadot Dress with Asymmetrical Line in 3 Colors Merah Red Hitam Black Putih White">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/20/pin_20260814_182419.png" alt="Polkadot Dress with Asymmetrical Line in 3 Colors Merah Red Hitam Black Putih White" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Polkadot Dress with Asymmetrical Line in 3 Colors Merah Red Hitam Black Putih White</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/7fYxdEmOZA" target="_blank" rel="noopener" title="Square Neck Boho Babydoll Dress in White or Black">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/19/pin_20260814_173644.png" alt="Square Neck Boho Babydoll Dress in White or Black" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Square Neck Boho Babydoll Dress in White or Black</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/6pzqdhpZFz" target="_blank" rel="noopener" title="Long Sleeve Floral Midi Dress with Lace in Blue and Purple">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/sg-11134201-22110-tqdcmtz43ejv4f" alt="Long Sleeve Floral Midi Dress with Lace in Blue and Purple" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Long Sleeve Floral Midi Dress with Lace in Blue and Purple</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/6fgQROqCaw" target="_blank" rel="noopener" title="𝐑𝐄𝐀𝐃𝐘 𝐒𝐓𝐎𝐂𝐊 𝐒𝐀𝐅">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/6bd228b35f8856e2a4a5b6bbf113248e" alt="𝐑𝐄𝐀𝐃𝐘 𝐒𝐓𝐎𝐂𝐊 𝐒𝐀𝐅" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">𝐑𝐄𝐀𝐃𝐘 𝐒𝐓𝐎𝐂𝐊 𝐒𝐀𝐅</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/7Ach2JoIa1" target="_blank" rel="noopener" title="Wrap Style Floral Ruched Asymmetrical Dress in 3 Colors Red Merah Green Hijau Purple Ungu">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/16/pin_20260814_181258.png" alt="Wrap Style Floral Ruched Asymmetrical Dress in 3 Colors Red Merah Green Hijau Purple Ungu" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Wrap Style Floral Ruched Asymmetrical Dress in 3 Colors Red Merah Green Hijau Purple Ungu</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/70JGq0ovuy" target="_blank" rel="noopener" title="(CUTTING BESAR) Puffy Sleeve Soft Pink atau Yellowish Green Dress Pink Floral Cottage Core Midi Dress with Ruched Bodice">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/sg-11134201-7qvfj-lj7aiqtov7b5fd" alt="(CUTTING BESAR) Puffy Sleeve Soft Pink atau Yellowish Green Dress Pink Floral Cottage Core Midi Dress with Ruched Bodice" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">(CUTTING BESAR) Puffy Sleeve Soft Pink atau Yellowish Green Dress Pink Floral Cottage Core Midi Dress with Ruched Bodice</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/3VjOfa2G1H" target="_blank" rel="noopener" title="[NACO]-Louver Set//One Set Halter Neck//Spring Summer Outfit//Casual Outfit//Backless Halter Set">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0p-mb8cnf40m4rde1" alt="[NACO]-Louver Set//One Set Halter Neck//Spring Summer Outfit//Casual Outfit//Backless Halter Set" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">[NACO]-Louver Set//One Set Halter Neck//Spring Summer Outfit//Casual Outfit//Backless Halter Set</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/3LPyTH2tME" target="_blank" rel="noopener" title="Puffy Sleeve White Dress Blue Floral Midi Dress with Ruched Bodice">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfgh-m3bucyfcxd5x0a" alt="Puffy Sleeve White Dress Blue Floral Midi Dress with Ruched Bodice" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Puffy Sleeve White Dress Blue Floral Midi Dress with Ruched Bodice</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/3qMF4C0zLJ" target="_blank" rel="noopener" title="SOLANA TUBE TOP">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/id-11134207-822wp-mmsv6bj5u8lhba" alt="SOLANA TUBE TOP" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">SOLANA TUBE TOP</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/3g2ort1cgG" target="_blank" rel="noopener" title="OOTD Pantai Cheek OOTD Korean Style Outfit Set 4in1 Outfit Pantai Outer + Celana + Inner + Hijab Outfit Pantai Outfit Ca">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/id-11134207-7ras9-m2ge9fkotdhm94" alt="OOTD Pantai Cheek OOTD Korean Style Outfit Set 4in1 Outfit Pantai Outer + Celana + Inner + Hijab Outfit Pantai Outfit Ca" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">OOTD Pantai Cheek OOTD Korean Style Outfit Set 4in1 Outfit Pantai Outer + Celana + Inner + Hijab Outfit Pantai Outfit Ca</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/2qThsM4nN5" target="_blank" rel="noopener" title="Rosy Blue Midi Dress with Cowl Neck Bunga Biru">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/10/pin_20260814_182557.png" alt="Rosy Blue Midi Dress with Cowl Neck Bunga Biru" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Rosy Blue Midi Dress with Cowl Neck Bunga Biru</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/2gAHg35Qi2" target="_blank" rel="noopener" title="Tq88indonesia AKARI Long Dress Wanita Floral Maxi Dress Korea Elegan Dress Panjang Motif Bunga Kekinian Aesthetic Casual">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/sg-11134201-824h8-mpm8i1s822a656" alt="Tq88indonesia AKARI Long Dress Wanita Floral Maxi Dress Korea Elegan Dress Panjang Motif Bunga Kekinian Aesthetic Casual" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Tq88indonesia AKARI Long Dress Wanita Floral Maxi Dress Korea Elegan Dress Panjang Motif Bunga Kekinian Aesthetic Casual</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/3B6YGy3Wh7" target="_blank" rel="noopener" title="Dress Rayon Premium Wanita Adem | Mini Dress Tali Adjustable | Outfit Summer Casual Kekinian">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/8/pin_tropical_jungle_20260814_235315.png" alt="Dress Rayon Premium Wanita Adem | Mini Dress Tali Adjustable | Outfit Summer Casual Kekinian" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Dress Rayon Premium Wanita Adem | Mini Dress Tali Adjustable | Outfit Summer Casual Kekinian</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/30n84f4A24" target="_blank" rel="noopener" title="Newlan QZ081 Butterfly Sleeve Cream Midi Dress with Slit">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/7/pin_tropical_jungle_20260814_233116.png" alt="Newlan QZ081 Butterfly Sleeve Cream Midi Dress with Slit" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Newlan QZ081 Butterfly Sleeve Cream Midi Dress with Slit</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/4qEmG1xBJP" target="_blank" rel="noopener" title="Asymmetrical Neckline Floral Mini Dress with Ruched Skirt">
+      <div class="ph">
+        
+        <img src="https://down-id.img.susercontent.com/file/sg-11134201-7qvfx-lfmimwwsbt1747" alt="Asymmetrical Neckline Floral Mini Dress with Ruched Skirt" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Asymmetrical Neckline Floral Mini Dress with Ruched Skirt</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+    <a class="look-item" href="https://s.shopee.co.id/4fvM3ixoeM" target="_blank" rel="noopener" title="Luna Premium Rayon Floral Maxi Dress – Korean Style Beach Dress Casual Summer Outfit">
+      <div class="ph">
+        
+        <img src="https://raw.githubusercontent.com/ydzakir/pinflow-images/main/images/5/pin_tropical_jungle_20260814_222402.png" alt="Luna Premium Rayon Floral Maxi Dress – Korean Style Beach Dress Casual Summer Outfit" loading="lazy" onerror="this.style.display='none'">
+        
+        
+      </div>
+      <div class="cap">
+        <div class="name">Luna Premium Rayon Floral Maxi Dress – Korean Style Beach Dress Casual Summer Outfit</div>
+        <div class="go">
+          <span>Lihat produk</span>
+          <span class="cta">Buka <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
+        </div>
+      </div>
+    </a>
+    
+  </div>
+
+  <div class="foot">Affress Studio · curated outfit</div>
+</div>
+</body>
+</html>
